@@ -1,0 +1,65 @@
+     Description about lab 1 
+
+1st question  a:
+permutations
+Algorithm:
+  permut(list2,left,right):
+    if left==right :      -------->1     
+        print(list2)      --------->1
+    else:
+        for i in left to right :     -----------> n+1
+            swap(list[left],list[i])   ---------->3n
+            permut(list2,left+1,right) ----------->n(t(n-1))
+            swap(list[left],list[i])   ------------>3n
+________________             analysis              ___________________________________
+stepcount={  2    basecase
+              3+7n+n*t(n-1) otherwise
+___________________________________________________________________________________________________________________________
+algorithm for subsets:
+def subsets(numbers):
+    if numbers == []:             ------> 1
+        return [[]]               ------> 1
+    x = subsets(numbers[1:])      ------->t(n-1)+1
+    list1=[]                      ------->1
+    for y in x:                   -------->2^n-1(true) + 1
+        list1.append([numbers[0]]+y) // for producing mutliple length subsets  -------->2^n-1
+    return x + list1     // this to add all subsets to a list                  -------->2
+"""""""analysis""""""""""""
+stepcount={  2    base case
+              7+2(2^n-1)+t(n-1)  otherwise
+___________________________________________________________________________________________________________________________
+->3rd question 
+#1st approach
+for i in given array:
+    if(i>max)
+       max=i
+    if(i<min)
+       min=i
+"timecomlexity is O(n){asymptotic analysis)"
+_________________________________________________________________________________________________________________________
+#2 nd approach 
+step1:sorting the given array using any sorting method(bubblesort,heapsort,insertionsort,selectionsort)in ascending order
+step2:assign the first element to minimum and last element to maximum
+"timecomlexity is O(n^2){asymptotic analysis)"
+__________________________________________________________________________________________________________________________
+# 3rd approach 
+ 
+divide and conquer approach:
+def divide_conquer_max(list1,n):
+    if(n==1):
+        return list1[0]
+    else:
+        left=list1(1 to n/2)
+        right=list1(n/2to n)
+        max1=divide_conquer_max(left,len(left))
+        max2=divide_conquer_max(right,len(right))
+        return max(max1,max2)
+similarly this is used to finding minimum:
+steppcount
+t(n)=2t(n/2)+1
+timecomlexity is O(n){asymptotic analysis)
+"but here the comaprisions is less compare to the first and second approach"
+      
+___________________________________________________________________________________________________________________________
+
+
